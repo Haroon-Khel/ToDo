@@ -1,0 +1,23 @@
+<h1>EJS Login</h1>
+<% if (typeof fl != 'undefined') { %>
+    <h3>Login unsuccessful</h3> 
+<% } %>
+
+<div class="ajax">
+    <button class="ajax-button" onclick="Ajaxrequest('GET','/routes/ajax')">AJAX request</button>
+    </button>
+</div>
+<div id="response"></div>
+<div id="dashboard-link">
+    <a href="/dashboard/haroon">Click to go to dashboard</a>
+</div>
+<div class="form-div">
+    <form action="/login" class="form" id="form-login" method="POST">
+        <label>Username</label>
+        <input type="text" id="login-username" placeholder="Username" name="username">
+        <label>Password</label>
+        <input type="password" id="login-password" placeholder="Password" name="password">
+        <button type="submit">Login</button>
+    </form>
+</div>
+<script type="text/javascript" src="index.js"></script>

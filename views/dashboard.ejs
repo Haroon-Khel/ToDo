@@ -1,0 +1,17 @@
+<h1>Welcome to <%= username %>'s dashboard</h1>
+<h2 id="todo-header">To do:</h2>
+
+<div id="todo-end"></div>
+
+<a href="/users/logout">Logout</a>
+
+<script>
+    var data = <%- JSON.stringify(data) %>
+    console.log(data);
+    var todoEnd = document.getElementById("todo-end");
+    data.todo.forEach((item) => {
+        const newDiv = document.createElement("div");
+        newDiv.appendChild(document.createTextNode(`${item.title}: ${item.body}`));
+        document.body.insertBefore(newDiv, todoEnd);
+    })
+</script>
