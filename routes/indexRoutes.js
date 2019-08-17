@@ -1,6 +1,6 @@
 const express = require('express');
-const fs = require('fs');
 const passport = require('passport');
+const DashboardData = require('../models/DashboardData');
 
 const router = express.Router();
 
@@ -20,10 +20,23 @@ router.get('/dashboard', (req, res) => {
     console.log('/dashboard');
     if (req.isAuthenticated()) {
         const username = req.user.username;
-        let data = JSON.parse(fs.readFileSync(`./items/${username}.json`));
-        res.render('dashboard', {
-            data,
-            username
+        DashboardData.findOne({ username: username }, (err, data) => {
+            if (err) {
+                console.log(err);
+            }
+            if (!data) {
+                console.log("No such document exists");
+                res.render('dashboard', {
+                    data: undefined,
+                    username
+                })
+            } else {
+                console.log("Document exists");
+                res.render('dashboard', {
+                    data,
+                    username
+                });
+            }
         });
     } else {
         res.redirect('/');
@@ -38,7 +51,7 @@ router.post('/login', (req, res, next) => {
         console.log('/login');
         passport.authenticate('local-login', {
             successRedirect: '/dashboard',
-            failureRedirect: '/',
+            failureRedirect: '/?fl=true',
         })(req, res, next);
     }
 });
