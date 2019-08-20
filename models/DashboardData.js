@@ -3,11 +3,11 @@ const mongoose = require('mongoose');
 const todoItemSchema = new mongoose.Schema({
     title: {
         type: String,
-        default: ''
+        default: 'title'
     },
     body: {
         type: String,
-        default: ''
+        default: 'body'
     },
     date: {
         type: String,

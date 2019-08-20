@@ -3,6 +3,31 @@
 
 <div id="todo-end"></div>
 
+<% if (items === "0") { %>
+    <h3>Add your first item</h3>
+    <div id="itemsave-form">
+        <form action="/users/itemsave" method="POST">
+            <label>Title</label>
+            <input type="text" name="title" id="itemsave-title" placeholder="Title">
+            <label>Body</label>
+            <input type="text" name="body" id="itemsave-body" placeholder="Body">
+            <button type="submit">Save item</button>
+        </form>
+    </div>
+    <% } else { %>
+    <h3>Add a new item</h3>
+    <div id="itemsave-form">
+        <form action="/users/itemsave" method="POST">
+            <label>Title</label>
+            <input type="text" name="title" id="itemsave-title" placeholder="Title">
+            <label>Body</label>
+            <input type="text" name="body" id="itemsave-body" placeholder="Body">
+            <button type="submit">Save item</button>
+        </form>
+    </div>
+    <% } %>
+
+
 <a href="/users/logout">Logout</a>
 
 <script>
