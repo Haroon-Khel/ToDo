@@ -7,9 +7,14 @@ router.get('/logout', (req, res) => {
     console.log(`${req.user.username} has logged out`);
     console.log(`req.session.items = ${req.session.items}`);
     req.session.destroy((err) => {
-        req.logout();
-        res.redirect('/');
-    })
+        if (err) {
+            console.log(err);
+            res.json("Error in logging out. Server may need restarting");
+        } else {
+            req.logout();
+            res.redirect('/');
+        }
+    });
 });
 
 router.post('/itemsave', (req, res) => {
@@ -37,14 +42,60 @@ router.post('/itemsave', (req, res) => {
         firstItem.save((err, item) => {
             if (err) {
                 console.log(err);
-                res.json({ msg: "Error in saving first item"});
+                res.json({ msg: "Error in saving first item" });
             } else {
                 console.log("First item saved succesfully");
                 res.redirect('/dashboard');
             }
         });
     }
+});
 
+router.post('/itemdelete', (req, res) => {
+    // Expecting parameters: item id
+    // Can only be accessed by users with content
+    if (req.session.items === "0") {
+        console.log("No items to delete");
+        res.json({ msg: "User has no content to delete" });
+    } else {
+        const id = req.body.id;
+        const username = req.user.username;
+        DashboardData.findOneAndUpdate({ username: username }, { $pull: { todo: { _id: id } } }, (err, item) => {
+            if (err) {
+                console.log(err);
+                res.json({ msg: "There was an error in removing the item" });
+            } else {
+                console.log("Todo item removed");
+                res.redirect('/dashboard');
+            }
+        });
+    }
+
+});
+
+router.post('/itemedit', (req, res) => {
+    // Expecting parameters: item id, new title, new body
+    if (req.session.items === "0") {
+        console.log("No items to edit");
+        res.json({ msg: "User has no content to edit" });
+    } else {
+        const id = req.body.id;
+        const title = req.body.title;
+        const body = req.body.body;
+        DashboardData.updateOne({ 'todo._id': id }, 
+            { $set: {
+                'todo.$.title': title,
+                'todo.$.body': body
+            }}, (err) => {
+                if (err) {
+                    console.log(err);
+                    res.json({ msg: "There was an error in updating the document"});
+                } else {
+                    console.log("Item editted");
+                    res.redirect('/dashboard');
+                }
+            });
+    }
 });
 
 module.exports = router;

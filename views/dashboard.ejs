@@ -27,6 +27,28 @@
     </div>
     <% } %>
 
+    <div id="itemdelete-form">
+        <h3>Delete an item</h3>
+        <form action="/users/itemdelete" method="post">
+            <label>Item ID</label>
+            <input type="text" name="id" id="itemdelete-id" placeholder="Item ID">
+            <button type="submit">Delete</button>
+        </form>
+    </div>
+
+    <div id="itemedit-form">
+        <h3>Edit an item</h3>
+        <form action="/users/itemedit" method="post">
+            <label>Title</label>
+            <input type="text" name="title" id="itemedit-title" placeholder="Title">
+            <label>Body</label>
+            <input type="text" name="body" id="itemedit-body" placeholder="Body">
+            <label>Item ID</label>
+            <input type="text" name="id" id="itemedit-id" placeholder="Item ID">
+            <button type="submit">Edit</button>
+        </form>
+    </div>
+
 
 <a href="/users/logout">Logout</a>
 
@@ -38,6 +60,7 @@
         data.todo.forEach((item) => {
             const newDiv = document.createElement("div");
             newDiv.appendChild(document.createTextNode(`${item.title}: ${item.body}`));
+            newDiv.setAttribute("id", item._id);
             document.body.insertBefore(newDiv, todoEnd);
         });
     } else {
