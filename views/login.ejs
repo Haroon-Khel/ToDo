@@ -1,22 +1,24 @@
-<h1>Login</h1>
+<link rel="stylesheet" href="splash.css">
+<h1 id="heading">Login</h1>
 <% if (typeof fl != 'undefined') { %>
-    <h3>Login unsuccessful</h3> 
+<h3>Login unsuccessful</h3>
 <% } %>
 
-<div class="ajax">
-    <button onclick="Ajaxrequest('GET','/routes/ajax')">AJAX request</button>
-    </button>
-</div>
-<div id="response"></div>
+<% include partial/login/sidenav %>
 
-<div class="form" id="login-form">
-    <form action="/login" class="form" method="POST">
-        <label>Username</label>
-        <input type="text" id="login-username" placeholder="Username" name="username">
-        <label>Password</label>
-        <input type="password" id="login-password" placeholder="Password" name="password">
-        <button type="submit">Login</button>
-    </form>
+
+<div class="grid-container" id="login-form">
+    <div class="grid-form border">
+        <form action="/login" class="form" method="POST">
+            <div class="grid-container-content">
+                <label for="username"><b>Username</b></label>
+                <input type="text" id="login-username" placeholder="Username" name="username" required>
+                <label for="password"><b>Password</b></label>
+                <input type="password" id="login-password" placeholder="Password" name="password" required>
+                <button class="button" style="grid-column: 2" type="submit">Login</button>
+            </div>
+
+        </form>
+    </div>
 </div>
-<a href="/register">Register</a>
 <script type="text/javascript" src="index.js"></script>

@@ -61,12 +61,20 @@
             const newDiv = document.createElement("div");
             newDiv.appendChild(document.createTextNode(`${item.title}: ${item.body}`));
             newDiv.setAttribute("id", item._id);
+            newDiv.setAttribute("onclick", "boxID(this);");
             document.body.insertBefore(newDiv, todoEnd);
         });
     } else {
         const newDiv = document.createElement("div");
         newDiv.appendChild(document.createTextNode("There is no content for this user"));
         document.body.insertBefore(newDiv, todoEnd);
+    }
+
+    function boxID(item) {
+
+        document.getElementById("itemdelete-id").value = item.id;
+        document.getElementById("itemedit-id").value = item.id;
+
     }
 
 </script>

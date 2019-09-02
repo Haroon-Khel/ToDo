@@ -1,0 +1,52 @@
+:root {
+    --bg-color: white;
+    --container-color: #f2f2f2;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 10px;
+    
+}
+
+nav {
+    background-color: #808080b9;
+    height: 35px;
+    padding: 5px;
+}
+
+nav a {
+    color: white;
+    float: left;
+    padding: 10px;
+}
+
+nav:hover {
+    background-color: #b3b3b3;
+    color: #808080;
+}
+
+.footer-div {
+    margin: 5px 0px;
+    width: 1000px;
+    position: fixed;
+
+}
+
+.container {
+    border: 1px solid black;
+} 
+
+.button, button {
+    border: none;
+    background-color: none;
+    padding: 10px;
+}
+
+input[type=text], input[type=password] {
+
+    text-decoration: none;
+    padding: 8px;
+
+
+}
