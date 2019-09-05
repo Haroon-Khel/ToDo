@@ -51,6 +51,11 @@ a.button, button {
     padding: 10px 0px;
 }
 
+a.button:hover, button:hover {
+    background-color: #d8ecf3;
+    border: solid 1px lightgrey;
+}
+
 input[type=text], input[type=password] {
 
     text-decoration: none;
