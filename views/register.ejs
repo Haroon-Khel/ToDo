@@ -7,17 +7,15 @@
 
 <% include partial/login/sidenav %>
 
-<div id="register-form" class="grid-container">
-    <div class="grid-form border">
-        <form action="/register" method="POST">
-            <div class="grid-container-content">
-                <label><b>Username</b></label>
-                <input type="text" name="username" id="register-username" placeholder="Username" required>
-                <label><b>Password</b></label>
-                <input type="password" name="password" id="register-password" placeholder="Password" required>
-                <button type="submit" style="grid-column: 2">Register</button>
-            </div>
 
-        </form>
-    </div>
+<div class="form-container" id="register-form">
+    <h4>Register</h4>
+    <form action="/register" method="post">
+        <div class="form-container-grid">
+            <input type="text" id="register-username" placeholder="Username" name="username" class="grid-item" required>
+            <input type="password" id="register-password" placeholder="Password" name="password" class="grid-item" required>
+            <button type="submit" id="login-submit">Register</button>
+            <a href="/" class="button" id="login-register" >Already have an account?</a>
+        </div>
+    </form>
 </div>
