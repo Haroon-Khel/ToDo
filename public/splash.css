@@ -1,19 +1,27 @@
+:root {
+    --container-border: solid 1px lightgrey;
+    --container-border-radius: 9px;
+}
+
 * {
     box-sizing: border-box;
 }
 
-.border {
+.shadow-border {
 
-    border: 2px solid black;
+    border: 1px solid;
+
 
 }
 
 .form-container {
-    border: solid 2px black;
+    border: var(--container-border);
+    border-radius: var(--container-border-radius);
     width: 500px;
     margin: auto;
     padding: 20px;
     height: 300px;
+    box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);
 }
 
 .grid-item {
@@ -23,7 +31,7 @@
 .form-container-grid {
 
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 50% 50%;
     grid-template-rows: auto auto auto;
     grid-gap: 10px;
 

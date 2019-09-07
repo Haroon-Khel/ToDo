@@ -1,6 +1,6 @@
 :root {
-    --bg-color: white;
-    --container-color: #f2f2f2;
+    --theme-blue: #4da6ff;
+    --button-text-color: white;
 }
 
 body {
@@ -44,16 +44,23 @@ a {
 }
 
 a.button, button {
+    font-weight: bold ;
+    color: var(--button-text-color);
     text-align: center;
     font-size: 15px;
     border: solid 1px grey;
-    background-color: lightblue;
+    background-color: var(--theme-blue);
     padding: 10px 0px;
+    cursor: pointer;
 }
 
 a.button:hover, button:hover {
-    background-color: #d8ecf3;
-    border: solid 1px lightgrey;
+    background-color: #0073e6;
+    /* border: solid 1px lightgrey; */
+}
+
+a:visited { 
+    color: var(--button-text-color) 
 }
 
 input[type=text], input[type=password] {
