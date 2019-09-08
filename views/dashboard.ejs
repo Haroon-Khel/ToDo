@@ -1,73 +1,72 @@
 <h1>Welcome to <%= username %>'s dashboard</h1>
-<h2 id="todo-header">To do:</h2>
+
 
 <div id="todo-end"></div>
+<div class="todo-container" id="todo-container">
+    <h2 id="todo-header">To do:</h2>
+    <div class="todo-grid-container" id="todo-grid-container">
+        
+    </div>
+</div>
+<div id="todo-end"></div>
 
-<% if (items === "0") { %>
-    <h3>Add your first item</h3>
-    <div id="itemsave-form">
-        <form action="/users/itemsave" method="POST">
-            <label>Title</label>
-            <input type="text" name="title" id="itemsave-title" placeholder="Title">
-            <label>Body</label>
-            <input type="text" name="body" id="itemsave-body" placeholder="Body">
-            <button type="submit">Save item</button>
-        </form>
-    </div>
-    <% } else { %>
-    <h3>Add a new item</h3>
-    <div id="itemsave-form">
-        <form action="/users/itemsave" method="POST">
-            <label>Title</label>
-            <input type="text" name="title" id="itemsave-title" placeholder="Title">
-            <label>Body</label>
-            <input type="text" name="body" id="itemsave-body" placeholder="Body">
-            <button type="submit">Save item</button>
-        </form>
-    </div>
-    <% } %>
+<h3>Add a new item</h3>
+<div id="itemsave-form">
+    <form action="/users/itemsave" method="POST">
+        <label>Title</label>
+        <input type="text" name="title" id="itemsave-title" placeholder="Title">
+        <label>Body</label>
+        <input type="text" name="body" id="itemsave-body" placeholder="Body">
+        <button type="submit">Save item</button>
+    </form>
+</div>
 
-    <div id="itemdelete-form">
-        <h3>Delete an item</h3>
-        <form action="/users/itemdelete" method="post">
-            <label>Item ID</label>
-            <input type="text" name="id" id="itemdelete-id" placeholder="Item ID">
-            <button type="submit">Delete</button>
-        </form>
-    </div>
+<div id="itemdelete-form">
+    <h3>Delete an item</h3>
+    <form action="/users/itemdelete" method="post">
+        <label>Item ID</label>
+        <input type="text" name="id" id="itemdelete-id" placeholder="Item ID">
+        <button type="submit">Delete</button>
+    </form>
+</div>
 
-    <div id="itemedit-form">
-        <h3>Edit an item</h3>
-        <form action="/users/itemedit" method="post">
-            <label>Title</label>
-            <input type="text" name="title" id="itemedit-title" placeholder="Title">
-            <label>Body</label>
-            <input type="text" name="body" id="itemedit-body" placeholder="Body">
-            <label>Item ID</label>
-            <input type="text" name="id" id="itemedit-id" placeholder="Item ID">
-            <button type="submit">Edit</button>
-        </form>
-    </div>
+<div id="itemedit-form">
+    <h3>Edit an item</h3>
+    <form action="/users/itemedit" method="post">
+        <label>Title</label>
+        <input type="text" name="title" id="itemedit-title" placeholder="Title">
+        <label>Body</label>
+        <input type="text" name="body" id="itemedit-body" placeholder="Body">
+        <label>Item ID</label>
+        <input type="text" name="id" id="itemedit-id" placeholder="Item ID">
+        <button type="submit">Edit</button>
+    </form>
+</div>
 
 
 <a class="button" href="/users/logout">Logout</a>
+
+
 
 <script>
     var data = <%- JSON.stringify(data) %>
     console.log(data);
     if (!(data === undefined)) {
-        var todoEnd = document.getElementById("todo-end");
+        var todoContainer = document.getElementById("todo-grid-container");
+        var todoContainerChild = document.getElementById("todo-grid-container").childNodes[0];
         data.todo.forEach((item) => {
             const newDiv = document.createElement("div");
             newDiv.appendChild(document.createTextNode(`${item.title}: ${item.body}`));
             newDiv.setAttribute("id", item._id);
             newDiv.setAttribute("onclick", "boxID(this);");
-            document.body.insertBefore(newDiv, todoEnd);
+            newDiv.classList.add("todo-grid-item");
+            todoContainer.insertBefore(newDiv, todoContainerChild);
         });
     } else {
         const newDiv = document.createElement("div");
         newDiv.appendChild(document.createTextNode("There is no content for this user"));
         document.body.insertBefore(newDiv, todoEnd);
+        todoContainer.insertBefore(newDiv, todoContainerChild);
     }
 
     function boxID(item) {
@@ -78,3 +77,4 @@
     }
 
 </script>
+<link rel="stylesheet" href="dashboard.css">

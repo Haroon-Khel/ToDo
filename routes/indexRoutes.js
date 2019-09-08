@@ -19,7 +19,6 @@ router.get('/', (req, res) => {
 
 router.get('/dashboard', (req, res) => {
     console.log('/dashboard');
-    // console.log(`req.session.items = ${req.session.items}`);
     if (req.isAuthenticated()) {
         const username = req.user.username;
         DashboardData.findOne({ username: username }, (err, data) => {
@@ -29,10 +28,7 @@ router.get('/dashboard', (req, res) => {
             }
             if (!data) {
                 console.log("No such document exists");
-                // In dashboard ejs, give the option to add the first item. A basic form
-                // Create session variables to save the fact that user has no documents
                 req.session.items = "0";
-                // console.log(`req.session.items = ${req.session.items}`);
                 res.render('dashboard', {
                     items: "0",
                     data: undefined,
@@ -41,7 +37,6 @@ router.get('/dashboard', (req, res) => {
             } else {
                 console.log("Document exists");
                 req.session.items = "1";
-                // console.log(`req.session.items = ${req.session.items}`);
                 res.render('dashboard', {
                     items: "1",
                     data,
