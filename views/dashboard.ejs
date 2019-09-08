@@ -1,14 +1,14 @@
-<h1>Welcome to <%= username %>'s dashboard</h1>
+<% include partial/dashboard/sidenav %>
+<% include partial/dashboard/navbar %>
 
 
-<div id="todo-end"></div>
+
 <div class="todo-container" id="todo-container">
     <h2 id="todo-header">To do:</h2>
     <div class="todo-grid-container" id="todo-grid-container">
-        
+
     </div>
 </div>
-<div id="todo-end"></div>
 
 <h3>Add a new item</h3>
 <div id="itemsave-form">
@@ -42,11 +42,6 @@
         <button type="submit">Edit</button>
     </form>
 </div>
-
-
-<a class="button" href="/users/logout">Logout</a>
-
-
 
 <script>
     var data = <%- JSON.stringify(data) %>

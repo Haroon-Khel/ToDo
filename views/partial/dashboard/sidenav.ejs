@@ -1,0 +1,39 @@
+<div class="sidenav" id="sidenav">
+    <div class="sidenav-content" id="sidenav-content">
+        <a href="#" onclick="alert('This link doesnt yet do anything')">Todo</a>
+        <a href="#" onclick="alert('This link doesnt yet do anything')">Other site</a>
+        <div class="bottom">
+            <a href="#" onclick="alert('This link doesnt yet do anything')">Account</a>
+            <a href="/users/logout">Logout</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    window.addEventListener("click", clearSideNav);
+
+    function openSideNav() {
+        // console.log(document.getElementById("sidenav").style.display);
+        document.getElementById("sidenav").style.display = "block"
+        setTimeout(() => {
+            document.getElementById("sidenav-content").style.width = "250px";
+        }, 1);
+        
+        // window.addEventListener("click", closeSideNavOffClick(e));
+
+    }
+
+    function closeSideNav() {
+        document.getElementById("sidenav-content").style.width = "0";
+        setTimeout(() => {
+            document.getElementById("sidenav").style.display = "none";
+        }, 150);
+    }
+
+    function clearSideNav(e) {
+        var sidenav = document.getElementById("sidenav");
+        if (e.target === sidenav) {
+            closeSideNav();
+        }
+    }
+</script>

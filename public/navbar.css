@@ -1,0 +1,51 @@
+:root {
+    --theme-blue: #4da6ff;
+}
+
+.navbar-container {
+
+    margin: -10px;
+    margin-bottom: 40px;
+    height: 50px;
+    background-color: var(--theme-blue);
+
+}
+
+.navbar-container a {
+
+    text-decoration: none;
+    padding: 6px;
+    text-align: center;
+
+}
+
+.navbar-header {
+
+    padding: 6px;
+    font-size: 30px;
+    color: white;
+    display: inline-block;
+
+}
+
+.menu-button {
+    color: white;
+    padding: 5px;
+    font-size: 30px;
+    cursor: pointer;
+    text-align: center;
+    align-content: center;
+    display: inline-block;
+    width: 50px;
+}
+
+.menu-button:hover {
+    
+    background-color: #0073e6;
+
+}
+
+/* 
+.navbar-container a:hover {
+    background-color: white;
+} */
