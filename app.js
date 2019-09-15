@@ -43,7 +43,6 @@ app.use(passport.session());
 
 
 // Routes
-app.use('/routes', require('./routes/ajax'));
 app.use('/', require('./routes/indexRoutes'));
 app.use('/users', require('./routes/dashboardRoutes'));
 

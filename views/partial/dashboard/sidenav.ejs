@@ -13,13 +13,11 @@
     window.addEventListener("click", clearSideNav);
 
     function openSideNav() {
-        // console.log(document.getElementById("sidenav").style.display);
+        
         document.getElementById("sidenav").style.display = "block"
         setTimeout(() => {
             document.getElementById("sidenav-content").style.width = "250px";
         }, 1);
-        
-        // window.addEventListener("click", closeSideNavOffClick(e));
 
     }
 
