@@ -1,3 +1,4 @@
 node_modules
 copyandpaste
 package-lock.json
+config/mongoURI.js
